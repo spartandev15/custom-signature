@@ -8,7 +8,7 @@
           <label for="name">Type in your signature</label>
           <input type="text" id="name" v-model="formData.name" required />
         </div>
-        <button @click="convertToImage">Submit Signature</button>
+        <button @click="convertToImage">Add signature</button>
       </form>
     </div>
     <div v-else style="padding: 1rem;">
@@ -47,8 +47,9 @@ export default {
       canvas.height = 100;
 
       // Set text style (italic)
-      context.font = 'italic 20px Arial';
+      context.font = 'italic 20px Cookie';
       context.fillStyle = 'black';
+      context.fontWeight = '500'
 
       // Draw the text on the canvas
       context.fillText(this.formData.name, 10, 40);
@@ -64,6 +65,8 @@ export default {
 </script>
 
 <style scoped>
+
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 .form-container {
   max-width: 450px;
   margin: 0 auto;
@@ -111,7 +114,7 @@ button:hover {
 }
 
 .italic-text {
-  font-style: italic;
+  font-family: 'Cookie', cursive;
   font-weight: bolder;
 }
 </style>

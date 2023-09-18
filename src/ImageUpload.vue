@@ -52,7 +52,7 @@ export default {
 }
 
 h2 {
-  text-align: center;
+  text-align: center; 
   margin-bottom: 20px;
 }
 
