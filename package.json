@@ -1,0 +1,14 @@
+{
+  "name": "weweb-custom",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "weweb build",
+    "serve": "weweb serve"
+  },
+  "devDependencies": {
+    "@weweb/cli": "latest"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
+  }
+}
