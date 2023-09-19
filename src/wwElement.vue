@@ -1,6 +1,5 @@
 <template>
   <div class="form-container">
-    <h2>Signature</h2>
     <!-- Use v-if to conditionally render the form or image -->
     <div v-if="!submitted">
       <form @submit.prevent="submitForm" style="padding: 1rem;">
@@ -68,13 +67,13 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 .form-container {
-  max-width: 450px;
+  /* max-width: 450px; */
   margin: 0 auto;
   padding: 20px 40px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 h2 {
@@ -87,7 +86,13 @@ h2 {
 }
 
 label {
+  color: #171717;
   display: block;
+  font-size: 15px;
+  /* font-family: normal; */
+  font-weight: 400;
+  font-style: normal;
+  line-height: 15px;
 }
 
 input[type="text"],
@@ -97,21 +102,23 @@ textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  margin-top: 1rem;
+  margin-top: 5px;
 }
 
 button {
-  background-color: #007bff;
+  background-color: #0E2448;
   color: #fff;
   border: none;
+  font-size: 16px;
   padding: 10px 20px;
   border-radius: 3px;
+  /* font-family: poppins; */
   cursor: pointer;
 }
 
-button:hover {
+/* button:hover {
   background-color: #0056b3;
-}
+} */
 
 .italic-text {
   font-family: 'Cookie', cursive;
