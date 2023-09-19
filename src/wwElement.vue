@@ -25,7 +25,7 @@
         <button @click="convertToImage">Add Signature</button>
       </form>
     </div>
-    <div v-else style="display: flex; align-items: center;">
+    <div v-else style="display: flex; align-items: center; ">
       <img v-if="signatureImage" :src="signatureImage" alt="Signature" />
       <i @click="editSignature" class="fas fa-pencil-alt edit-button"></i> 
     </div>
@@ -59,7 +59,7 @@ export default {
 
       const textWidth = context.measureText(this.formData.name).width;
       // Set canvas dimensions (adjust as needed)
-      canvas.width = textWidth + 20;
+      canvas.width = textWidth + 50;
       canvas.height = 60;
       canvas.color = "red"
       // Set text style (italic)
@@ -130,13 +130,13 @@ button {
   border: none;
   font-size: 16px;
   padding: 10px 20px;
-  border-radius: 3px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-/* button:hover {
-  background-color: #0056b3;
-} */
+button:hover {
+  background-color: #124677;
+}
 
 .italic-text {
   font-family: 'Cookie', cursive;
@@ -144,7 +144,6 @@ button {
 }
 /* Add these styles for the edit button */
 .edit-button {
-overflow: visible;
   background: none;
   cursor: pointer;
   font-size: 16px;
