@@ -1,17 +1,33 @@
+
+
+
+
+
+
+
 <template>
+  <head>
+
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    rel="stylesheet"
+    />
+  </head>
+
   <div class="form-container">
     <!-- Use v-if to conditionally render the form or image -->
     <div v-if="!submitted">
-      <form @submit.prevent="submitForm" style="padding: 1rem;">
+      <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="name">Type in your signature</label>
           <input type="text" id="name" v-model="formData.name" required />
         </div>
-        <button @click="convertToImage">Add signature</button>
+        <button @click="convertToImage">Add Signature</button>
       </form>
     </div>
-    <div v-else style="padding: 1rem;">
+    <div v-else style="display: flex; align-items: center;">
       <img v-if="signatureImage" :src="signatureImage" alt="Signature" />
+      <i @click="editSignature" class="fas fa-pencil-alt edit-button"></i> 
     </div>
   </div>
 </template>
@@ -41,10 +57,11 @@ export default {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
 
+      const textWidth = context.measureText(this.formData.name).width;
       // Set canvas dimensions (adjust as needed)
-      canvas.width = 400;
-      canvas.height = 100;
-
+      canvas.width = textWidth + 20;
+      canvas.height = 60;
+      canvas.color = "red"
       // Set text style (italic)
       context.font = 'italic 20px Cookie';
       context.fillStyle = 'black';
@@ -59,21 +76,23 @@ export default {
       // Set the data URL as the signature image
       this.signatureImage = dataURL;
     },
+    editSignature() {
+      // Handle the edit signature functionality here
+      this.submitted = false; // Show the form again for editing
+    },
   },
 };
 </script>
 
 <style scoped>
 
+/* Your existing styles... */
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 .form-container {
-  /* max-width: 450px; */
+  max-width: 100%;
   margin: 0 auto;
-  padding: 20px 40px;
-  /* border: 1px solid #ccc; */
-  /* border-radius: 5px; */
+margin-top: 20px;
   background-color: #fff;
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 h2 {
@@ -86,7 +105,7 @@ h2 {
 }
 
 label {
-  color: #171717;
+  color: #000000;
   display: block;
   font-size: 15px;
   /* font-family: normal; */
@@ -112,7 +131,6 @@ button {
   font-size: 16px;
   padding: 10px 20px;
   border-radius: 3px;
-  /* font-family: poppins; */
   cursor: pointer;
 }
 
@@ -124,4 +142,14 @@ button {
   font-family: 'Cookie', cursive;
   font-weight: bolder;
 }
+/* Add these styles for the edit button */
+.edit-button {
+overflow: visible;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 1.5rem;
+}
+
 </style>
