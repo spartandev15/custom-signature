@@ -63,7 +63,7 @@ export default {
       canvas.height = 60;
       canvas.color = "red"
       // Set text style (italic)
-      context.font = 'italic 20px Cookie';
+      context.font = 'italic 30px Cookie';
       context.fillStyle = 'black';
       context.fontWeight = '500'
 
