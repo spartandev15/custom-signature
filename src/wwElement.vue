@@ -141,7 +141,7 @@ button:hover {
 
 .signature-text {
   margin-top: 10px;
-  font-size: 18px;
+font: italic 30px Cookie;
   font-weight: bold;
 }
 </style>
