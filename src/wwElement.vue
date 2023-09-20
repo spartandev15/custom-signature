@@ -2,10 +2,10 @@
   <head>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet" />
   </head>
-   
+
   <div class="form-container">
     <div v-if="!submitted">
-      <form @submit.prevent="submitForm"> 
+      <form @submit.prevent="submitForm">
         <div class="form-group">
           <label for="name">Type in your signature</label>
           <input type="text" id="name" v-model="formData.name" required />
@@ -13,11 +13,13 @@
         <button @click="convertToImage">Add Signature</button>
       </form>
     </div>
-    <div v-else style="display: flex; ">
-      <img v-if="signatureImage" :src="signatureImage" alt="Signature" />
-      <i @click="editSignature" class="fas fa-pencil-alt edit-button"></i>
+    <div v-else style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+      <div style="display: flex;">
+        <img v-if="signatureImage" :src="signatureImage" alt="Signature" />
+        <i @click="editSignature" class="fas fa-pencil-alt edit-button"></i>
+      </div>
+      <p class="signature-text" v-if="showSignatureText">{{ formData.name }}</p>
     </div>
-    <p class="signature-text">{{ formData.name }}</p>
   </div>
 </template>
 
@@ -47,13 +49,13 @@ export default {
       const context = canvas.getContext('2d');
 
       const textWidth = context.measureText(this.formData.name).width;
-      canvas.width = textWidth + 50;
+      canvas.width = textWidth + 80;
       canvas.height = 60;
-      canvas.color = "red"
+
       // Set text style (italic)
       context.font = 'italic 30px Cookie';
       context.fillStyle = 'black';
-      context.fontWeight = '500'
+      context.fontWeight = '500';
 
       // Draw the text on the canvas
       context.fillText(this.formData.name, 10, 40);
@@ -63,9 +65,13 @@ export default {
 
       // Set the data URL as the signature image
       this.signatureImage = dataURL;
+
+      // Show the signature text
+      this.showSignatureText = true;
     },
     editSignature() {
       this.submitted = false; // Show the form again for editing
+      this.showSignatureText = false; // Hide the signature text
     },
   },
 };
@@ -136,12 +142,12 @@ button:hover {
   font-size: 16px;
   font-weight: bold;
   margin-left: 1.5rem;
-  color:#71717A
+  color: #71717A
 }
 
 .signature-text {
   margin-top: 10px;
-font: italic 30px Cookie;
+  font: italic 30px Cookie;
   font-weight: bold;
 }
 </style>
