@@ -1,23 +1,11 @@
-
-
-
-
-
-
-
 <template>
   <head>
-
-    <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet" />
   </head>
-
+   
   <div class="form-container">
-    <!-- Use v-if to conditionally render the form or image -->
     <div v-if="!submitted">
-      <form @submit.prevent="submitForm">
+      <form @submit.prevent="submitForm"> 
         <div class="form-group">
           <label for="name">Type in your signature</label>
           <input type="text" id="name" v-model="formData.name" required />
@@ -25,10 +13,11 @@
         <button @click="convertToImage">Add Signature</button>
       </form>
     </div>
-    <div v-else style="display: flex; align-items: center; ">
+    <div v-else style="display: flex; ">
       <img v-if="signatureImage" :src="signatureImage" alt="Signature" />
-      <i @click="editSignature" class="fas fa-pencil-alt edit-button"></i> 
+      <i @click="editSignature" class="fas fa-pencil-alt edit-button"></i>
     </div>
+    <p class="signature-text">{{ formData.name }}</p>
   </div>
 </template>
 
@@ -58,7 +47,6 @@ export default {
       const context = canvas.getContext('2d');
 
       const textWidth = context.measureText(this.formData.name).width;
-      // Set canvas dimensions (adjust as needed)
       canvas.width = textWidth + 50;
       canvas.height = 60;
       canvas.color = "red"
@@ -77,21 +65,19 @@ export default {
       this.signatureImage = dataURL;
     },
     editSignature() {
-      // Handle the edit signature functionality here
       this.submitted = false; // Show the form again for editing
     },
   },
 };
 </script>
-
 <style scoped>
-
 /* Your existing styles... */
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
 .form-container {
   max-width: 100%;
   margin: 0 auto;
-margin-top: 20px;
+  margin-top: 20px;
   background-color: #fff;
 }
 
@@ -142,6 +128,7 @@ button:hover {
   font-family: 'Cookie', cursive;
   font-weight: bolder;
 }
+
 /* Add these styles for the edit button */
 .edit-button {
   background: none;
@@ -149,6 +136,12 @@ button:hover {
   font-size: 16px;
   font-weight: bold;
   margin-left: 1.5rem;
+  color:#71717A
 }
 
+.signature-text {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
 </style>

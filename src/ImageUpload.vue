@@ -55,11 +55,11 @@ h2 {
   text-align: center; 
   margin-bottom: 20px;
 }
-
+   
 .form-group {
   margin-bottom: 20px;
 }
-
+   
 label {
   display: block;
   font-weight: bold;
