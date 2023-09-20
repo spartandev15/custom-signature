@@ -13,8 +13,8 @@
         <button @click="convertToImage">Add Signature</button>
       </form>
     </div>
-    <div v-else style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
-      <div style="display: flex;">
+    <div v-else style="display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center;">
         <img v-if="signatureImage" :src="signatureImage" alt="Signature" />
         <i @click="editSignature" class="fas fa-pencil-alt edit-button"></i>
       </div>
@@ -49,7 +49,7 @@ export default {
       const context = canvas.getContext('2d');
 
       const textWidth = context.measureText(this.formData.name).width;
-      canvas.width = textWidth + 80;
+      canvas.width = textWidth + 100;
       canvas.height = 60;
 
       // Set text style (italic)
@@ -147,7 +147,8 @@ button:hover {
 
 .signature-text {
   margin-top: 10px;
-  font: italic 30px Cookie;
+  font: normal;
   font-weight: bold;
+  margin-left: 7px;
 }
 </style>
