@@ -19,6 +19,7 @@
         <i @click="editSignature" class="fas fa-pencil-alt edit-button"></i>
       </div>
       <p class="signature-text" v-if="showSignatureText">{{ formData.name }}</p>
+      <input v-model="formData.name" class="display-name" v-if="showSignatureText" />
     </div>
   </div>
 </template>
@@ -46,7 +47,10 @@ export default {
     convertToImage() {
       // Create a new canvas element
       const canvas = document.createElement('canvas');
+      const inputValue = document.createElement('input');
       const context = canvas.getContext('2d');
+
+      inputValue.value = this.formData.name
 
       const textWidth = context.measureText(this.formData.name).width;
       canvas.width = textWidth + 100;
