@@ -1,7 +1,7 @@
 <template>
   <div class="ww-color-picker">
-    <input type="text" class="ww-input" v-model="text" required />
-    <!-- <img v-if="image" :src="image" alt="Image" /> -->
+    <input type="text" class="ww-input" @input="convertToImage" v-model="text" required />
+    <img v-if="image" :src="image" alt="Image" />
     <!-- <wwElement v-bind="content.labelComponent" :ww-props="{ text:text || '' }" /> -->
   </div>
 </template>
@@ -70,8 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 .ww-color-picker {
-  display: flex;
-  align-items: center;
+  // align-items: s;
 }
 
 .ww-input {
@@ -81,5 +80,6 @@ export default {
   color: #000000;
   height: 42px;
   padding: 0 12px;
+  font-style: italic;
 }
 </style>
