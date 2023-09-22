@@ -1,6 +1,6 @@
 <template>
   <div class="ww-color-picker">
-    <input type="color"  v-model="color"/>
+    <input type="text"  v-model="text"/>
    <wwElement v-bind="content.labelComponent" :ww-props="{text:color || ''}"/>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
         return {value,setValue}
   },
   computed: {
-    color:{ 
+    text:{ 
       get(){
         return typeof this.value === 'string'? this.value:''
       },
