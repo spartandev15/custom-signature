@@ -1,7 +1,7 @@
 export default {
   editor: {
     label: {
-      en: "My Element",
+      en: "color-picker",
     },
   },
   properties: {
@@ -10,7 +10,7 @@ export default {
         en: "Text color",
       },
       type: "Color",
-      defaultValue: "#F23636",
+      defaultValue: "yellow",
     },
     labelComponent: {
       hidden: true,
