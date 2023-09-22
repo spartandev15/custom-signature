@@ -2,7 +2,7 @@
   <div class="ww-color-picker">
     <input type="text" v-model="text" @input="convertToImage" required />
     <img v-if="image" :src="image" alt="Image" />
-    <!-- <wwElement v-bind="content.labelComponent" :ww-props="{ text:this.image || '' }" /> -->
+    <wwElement v-bind="content.labelComponent" :ww-props="{ text:this.image || '' }" />
   </div>
 </template>
 
@@ -23,9 +23,10 @@ export default {
   computed: {
     text: {
       get() {
+        // alert(this.image)
+        // console.log(this.image);
         var myValue = this.image;
-        console.log("myvaluy--",myValue);
-        return myValue;
+        return typeof this.value === 'string' ? this.image : '';
       },
       set(value) {
         this.setValue(value);
