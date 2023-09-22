@@ -2,6 +2,7 @@
   <div class="ww-color-picker">
     <input type="text" v-model="text" @input="convertToImage" required />
     <img v-if="image" :src="image" alt="Image" />
+    <!-- <wwElement v-bind="content.labelComponent" :ww-props="{ text:this.image || '' }" /> -->
   </div>
 </template>
 
@@ -11,11 +12,29 @@ export default {
     content: { type: Object, required: true },
     uid: { type: Object, required: true },
   },
+  setup(props) {
+    const { value, setValue} = wwLib.wwVariable.useComponentVariable({
+      uid: props.uid,
+      name: 'value',
+      type: 'string',
+    });
+    return { value, setValue };
+  },
+  computed: {
+    text: {
+      get() {
+        var myValue = this.image;
+        console.log("myvaluy--",myValue);
+        return myValue;
+      },
+      set(value) {
+        this.setValue(value);
+      },
+    },
+  },
   data() {
     return {
-      value: '', // Store the value as a data property
-      text: '', // Input text
-      image: null, // Image data URL
+      image: this.image,
     };
   },
   methods: {
@@ -25,7 +44,7 @@ export default {
       const context = canvas.getContext('2d');
 
       // Define the canvas dimensions and style
-      canvas.width = 200; // Set the desired width
+      canvas.width = 300; // Set the desired width
       canvas.height = 60; // Set the desired height
       context.font = 'italic 30px Cookie';
       context.fillStyle = 'black';
@@ -44,7 +63,7 @@ export default {
       this.image = dataURL;
 
       // Update the value (if needed)
-      this.value = this.text;
+      this.value = dataURL;
     },
   },
 };
