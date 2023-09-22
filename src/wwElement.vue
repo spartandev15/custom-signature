@@ -1,8 +1,8 @@
 <template>
   <div class="ww-color-picker">
-    <input type="text" v-model="text" @input="convertToImage" required />
-    <img v-if="image" :src="image" alt="Image" />
-    <wwElement v-bind="content.labelComponent" :ww-props="{ text:this.image || '' }" />
+    <input type="text" class="ww-input" v-model="text" required />
+    <!-- <img v-if="image" :src="image" alt="Image" /> -->
+    <!-- <wwElement v-bind="content.labelComponent" :ww-props="{ text:text || '' }" /> -->
   </div>
 </template>
 
@@ -13,20 +13,18 @@ export default {
     uid: { type: Object, required: true },
   },
   setup(props) {
-    const { value, setValue} = wwLib.wwVariable.useComponentVariable({
+    const { value, setValue } = wwLib.wwVariable.useComponentVariable({
       uid: props.uid,
       name: 'value',
       type: 'string',
+      defaultValue: null,
     });
     return { value, setValue };
   },
   computed: {
     text: {
       get() {
-        // alert(this.image)
-        // console.log(this.image);
-        var myValue = this.image;
-        return typeof this.value === 'string' ? this.image : '';
+        return typeof this.value === 'string' ? this.value : '';
       },
       set(value) {
         this.setValue(value);
@@ -35,7 +33,7 @@ export default {
   },
   data() {
     return {
-      image: this.image,
+      image: null,
     };
   },
   methods: {
@@ -74,5 +72,14 @@ export default {
 .ww-color-picker {
   display: flex;
   align-items: center;
+}
+
+.ww-input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  color: #000000;
+  height: 42px;
+  padding: 0 12px;
 }
 </style>
