@@ -1,6 +1,6 @@
 <template>
   <div class="ww-color-picker">
-    <label>Type your signature</label><!-- Add your heading here -->
+    <label>Type in your signature</label><!-- Add your heading here -->
     <input type="text" class="ww-input" @input="convertToImage" style="margin-top: 5px;"  v-model="text" required />
     <img v-if="image" :src="image" alt="Image" />
     <!-- <wwElement v-bind="content.labelComponent" :ww-props="{ text:text || '' }" /> -->
