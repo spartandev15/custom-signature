@@ -16,6 +16,17 @@ export default {
       type: "Color",
       defaultValue: "yellow",
     },
+    required: {
+      label: { en: 'Required', fr: 'Requis' },
+      type: 'OnOff',
+      section: 'settings',
+      defaultValue: true,
+      bindable: true,
+      bindingValidation: {
+          type: 'boolean'            
+        },
+      /* wwEditor:end */
+  },
     // Image Properties
     // url: {
     //   label: { en: 'Image', fr: 'Image' },
